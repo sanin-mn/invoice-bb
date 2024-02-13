@@ -17,6 +17,7 @@ const InvoiceForm = () => {
   const [tax, setTax] = useState('');
   const [invoiceNumber, setInvoiceNumber] = useState(1);
   const [customerName, setCustomerName] = useState('');
+  const [customerNumber, setCustomerNumber] = useState('');
   const [img, setImg] = useState('');
 
   const [items, setItems] = useState([
@@ -139,6 +140,18 @@ const InvoiceForm = () => {
             onChange={(event) => setCustomerName(event.target.value)}
           />
         </div>
+        <div className="grid grid-cols-2 gap-2 pt-4 pb-8">
+          <input
+            required
+            className="flex-1"
+            placeholder="Customer number"
+            type="number"
+            name="customerNumber"
+            id="customerNumber"
+            value={customerNumber}
+            onChange={(event) => setCustomerNumber(event.target.value)}
+          />
+        </div>
         <table className="w-full p-4 text-left">
           <thead>
             <tr className="border-b border-gray-900/10 text-sm md:text-base">
@@ -212,6 +225,7 @@ const InvoiceForm = () => {
               invoiceNumber,
               img,
               customerName,
+              customerNumber,
               subtotal,
               taxRate,
               discountRate,

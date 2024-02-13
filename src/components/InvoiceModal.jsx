@@ -129,19 +129,19 @@ today = dd + '/' + mm + '/' + yyyy;
               <div className="p-4 w-full" id="print">
                 
                 <div className='flex'>
-                  <div className='flex mr-5'>
+                  <div className='flex'>
                     <img className='h-20 w-20 border-4' src={invoiceInfo.img} alt="" />
-                    <div className='flex flex-col ml-2'>
-                      <small className='font-bold m-0 p-0'>BLACK BEES</small>
-                      <small  style={{color:'#5E5E5E'}} >msanin7003@gmail.com</small>
+                    <div className='flex flex-col ml-2 mr-4'>
+                      <small className='font-bold m-0 p-0'>BLACK BEE</small>
+                      <small  style={{color:'#5E5E5E'}} >blackbees.info@gmail.com</small>
                       <small  style={{color:'#5E5E5E'}}>(+91) 7356857003</small>
-                      <small  style={{color:'#5E5E5E'}} >blackbeescreative.in</small>
+                      <small  style={{color:'#5E5E5E'}} >blackbeecreative.in</small>
                     </div>
                   </div>
-                  <div className='text-right flex flex-col ml-20'>
+                  <div className='text-right flex flex-col ml-16'>
                     <div className='flex flex-col'>
                       <small className="font-bold">INVOICE NO.</small>
-                      <small className='font-medium' style={{color:'#5E5E5E'}}>{`NK/24/${invoiceInfo.invoiceNumber}`}</small>
+                      <small className='font-medium' style={{color:'#5E5E5E'}}>{`BB/24/${invoiceInfo.invoiceNumber}`}</small>
                     </div>
                     <div className='flex flex-col'>
                       <small className="font-bold">DATE</small>
@@ -149,16 +149,17 @@ today = dd + '/' + mm + '/' + yyyy;
                     </div>
                   </div>
                 </div>
-                <hr className='mt-3' style={{border:'1px solid'}} />
+                <hr className='mt-3' style={{border:'0.5px solid'}} />
                 <div className="mt-6">
-                  <div className="mb-4 grid grid-cols-4">
-                    <span className="font-semibold" style={{color:'#787878'}}>Bill To :</span>
-                    <span className='font-semibold'>{invoiceInfo.customerName}</span>
+                  <div className="mb-4 grid grid-rows-3">
+                    <span className="font-semibold text-sm" style={{color:'#787878'}}>Bill To</span>
+                    <span className='font-bold ml-2'>{invoiceInfo.customerName}</span>
+                    <span className='font-normal ml-2'>{invoiceInfo.customerNumber}</span>
                   </div>
 
                   <table className="w-full text-left">
-                    <thead>
-                      <tr className="border-y border-black/10 text-sm md:text-base">
+                    <thead className='bg-slate-100'>
+                      <tr className=" border-black/10 text-sm md:text-base">
                         <th>DESCRIPTION</th>
                         <th className="text-center">QTY</th>
                         <th className="text-right">RATE</th>
@@ -168,7 +169,7 @@ today = dd + '/' + mm + '/' + yyyy;
                     <tbody>
                       {items.map((item) => (
                         <tr key={item.id}>
-                          <td className="w-full">{item.name}</td>
+                          <td className="w-full font-medium">{item.name}</td>
                           <td className="min-w-[50px] text-center">
                             {item.qty}
                           </td>
@@ -183,22 +184,22 @@ today = dd + '/' + mm + '/' + yyyy;
                     </tbody>
                   </table>
 
-                  <div className="mt-4 flex flex-col items-end space-y-2">
+                  <div className="mt-4 flex flex-col text-slate-700 items-end space-y-2">
                     <div className="flex w-full justify-between border-t border-black/10 pt-2">
-                      <span className="font-bold">Subtotal</span>
+                      <span className="font-semibold">Subtotal</span>
                       <span>{invoiceInfo.subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between">
-                      <span className="font-bold">Discount</span>
+                      <span className="font-semibold">Discount</span>
                       <span>{invoiceInfo.discountRate.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between">
-                      <span className="font-bold">Tax</span>
+                      <span className="font-semibold">Tax</span>
                       <span>{invoiceInfo.taxRate.toFixed(2)}</span>
                     </div>
                     <div className="flex w-full justify-between border-t border-black/10 py-2">
-                      <span className="font-bold">Total</span>
-                      <span className="font-bold">
+                      <span className="font-semibold">Total</span>
+                      <span className="font-bold text-black">
                       ₹
                         {invoiceInfo.total % 1 === 0
                           ? invoiceInfo.total
